@@ -2,6 +2,7 @@ import Avatar from "@/assets/images/avatar.png";
 import { Post } from "@/types/post";
 import { formatTimeAgo } from "@/utils/date";
 import { getPostReactionState } from "@/utils/getPostReactionState";
+import { areArraysEqual } from "@/utils/help";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useMemo } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
@@ -46,6 +47,8 @@ const PostCard = ({
     });
   };
 
+  console.log("Just being rendered:", post.id);
+
   const {
     isLiked,
     isDisliked,
@@ -65,10 +68,7 @@ const PostCard = ({
         className="bg-white dark:bg-zinc-900 rounded-2xl shadow p-4 mb-4"
       >
         <View className="flex-row items-center mb-2">
-          <Image
-            source={Avatar}
-            className="w-10 h-10 rounded-full mr-3"
-          />
+          <Image source={Avatar} className="w-10 h-10 rounded-full mr-3" />
           <View>
             <Text className="font-poppins-medium text-gray-900 dark:text-gray-100">
               User {post.userId}
@@ -137,4 +137,10 @@ const PostCard = ({
   );
 };
 
-export default React.memo(PostCard);
+export default React.memo(PostCard, (prev, next) => {
+  return (
+    prev.post.id === next.post.id &&
+    areArraysEqual(prev.likedPostIds, next.likedPostIds) &&
+    areArraysEqual(prev.dislikedPostIds, next.dislikedPostIds)
+  );
+});

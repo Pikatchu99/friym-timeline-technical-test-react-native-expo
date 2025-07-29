@@ -1,50 +1,64 @@
-# Welcome to your Expo app 👋
+# 📱 Friym Timeline
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Une application mobile de type timeline développée avec **React Native (Expo)** et **TypeScript**.  
+Elle affiche une liste de posts paginés depuis [DummyJSON](https://dummyjson.com/posts), avec gestion des likes/dislikes persistants, dark mode et support offline.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Fonctionnalités
 
-   ```bash
-   npm install
-   ```
+✅ Affichage d'une liste de posts (avatar, utilisateur, contenu, timestamp)  
+✅ Pagination par lot de 10 avec **FlatList**  
+✅ **Skeleton loader** pendant le chargement initial  
+✅ **Pull-to-refresh** pour recharger les posts  
+✅ Boutons **"J'aime" / "Je n'aime pas"** avec persistance locale (offline-first)  
+✅ **Dark mode fonctionnel** basé sur Zustand + NativeWind  
+✅ Mini Gestion d'erreur réseau avec affichage d'un message et mode offline  
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠️ **Stack technique**
 
-In the output, you'll find options to open the app in a
+- **React Native 0.79.5 (Expo)**
+- **TypeScript strict**
+- **Zustand** (store + persistance offline via AsyncStorage)
+- **NativeWind (Tailwind)** pour le style
+- **React Navigation** (gestion de thèmes)
+- **React Native Reanimated** (animations spring)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## ⚡ **Setup rapide**
 
-## Get a fresh project
+### 1️⃣ Cloner le projet
+\`\`\`bash
+git clone https://github.com/<ton-github>/friym-timeline.git
+cd friym-timeline
+\`\`\`
 
-When you're ready, run:
+### 2️⃣ Installer les dépendances
+\`\`\`bash
+yarn install
+\`\`\`
 
-```bash
-npm run reset-project
-```
+### 3️⃣ Lancer le projet en local (Expo Go)
+\`\`\`bash
+yarn run start
+\`\`\`
+- Scanner le QR code avec **Expo Go (iOS/Android)**.
+---
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🔁 **Gestion d'erreur réseau avec retry**
 
-## Learn more
+- Si l'API est inaccessible, l'app affiche **"Mode hors ligne - données locales affichées"**.  
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🌙 **Dark mode**
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- Automatique via Zustand (\`theme: "light" | "dark"\`) et NativeWind.
+- Bouton toggle dans le header pour switch manuel.
 
-## Join the community
+---
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## ✨ Auteur
+- **Yémalin Modeste AGBANGLA** – [GitHub](https://github.com/pikatchu99)
