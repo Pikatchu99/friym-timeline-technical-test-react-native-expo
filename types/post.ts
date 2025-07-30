@@ -5,6 +5,9 @@ interface Reactions {
 
 interface Post {
     id: number;
+    type: 'text' | 'image' | 'video';
+    videoUrl?: string;
+    imageUrl?: string;
     title: string;
     body: string;
     tags: string[];
@@ -15,4 +18,13 @@ interface Post {
     createdAt?: string;
 }
 
-export { Post };
+interface ReactionState {
+    isLiked: boolean;
+    isDisliked: boolean;
+    displayedLikes: number;
+    displayedDislikes: number;
+    totalReactions: number;
+}
+
+
+export { Post, ReactionState };

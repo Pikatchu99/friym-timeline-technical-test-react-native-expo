@@ -55,14 +55,12 @@ const homeScreen = () => {
         [...Array(5)].map((_, index) => <PostSkeleton key={index} />)
       ) : (
         <FlatList
-          data={posts}
+          data={[]}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
-          ListEmptyComponent={
-            isLoading ? <PostSkeleton /> : <EmptyListMessage />
-          }
-          ListFooterComponent={isLoadingMore ? () => <PostSkeleton /> : null}
-          onEndReached={loadMorePosts}
+          ListEmptyComponent={<EmptyListMessage />}
+          ListFooterComponent={isLoadingMore && posts.length > 0 ? () => <PostSkeleton /> : null}
+          onEndReached={posts.length > 0 ? loadMorePosts : undefined}
           onEndReachedThreshold={0.5}
           refreshing={isRefreshing}
           onRefresh={refreshPosts}

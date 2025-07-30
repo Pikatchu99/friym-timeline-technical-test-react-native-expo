@@ -16,6 +16,8 @@ export const usePostStore = create<StoreState>()(
         isLoadingMore: false,
         isRefreshing: false,
         error: null,
+        type: 'text',
+        
 
         setPosts: (allPosts) => set({ allPosts }),
         setIsLoading: (isLoading) => set({ isLoading }),
@@ -54,7 +56,7 @@ export const usePostStore = create<StoreState>()(
         },
         loadMorePosts: async () => {
             const { allPosts, posts, page, limit, isLoadingMore } = get();
-            if (isLoadingMore) return;
+            if (isLoadingMore || posts.length === 0) return;
 
             const nextPage = page + 1;
             const start = (nextPage - 1) * limit;
