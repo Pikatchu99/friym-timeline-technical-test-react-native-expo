@@ -55,7 +55,7 @@ const homeScreen = () => {
         [...Array(5)].map((_, index) => <PostSkeleton key={index} />)
       ) : (
         <FlatList
-          data={[]}
+          data={posts}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
           ListEmptyComponent={<EmptyListMessage />}
